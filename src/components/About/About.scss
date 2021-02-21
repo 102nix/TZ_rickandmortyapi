@@ -1,0 +1,42 @@
+.about .container{
+  padding: 10px;
+  margin: 10px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 980px;
+  color: #fff;
+}
+.title{
+  font-size: 21px;
+  margin: 10px 0;
+}
+table {
+  margin-top: 10px;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 3px solid rgb(243, 238, 243);
+  box-shadow: 7px 9px 11px rgb(243, 243, 243);
+}
+tbody td {
+  text-align: center;
+}
+th, td {
+  padding: 20px;
+}
+.episode-div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.go-back{
+  margin-top: 30px;
+  font-size: 31px;
+  cursor: pointer;
+  &:hover{
+    font-weight: bold;
+  }
+}

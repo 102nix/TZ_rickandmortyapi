@@ -1,0 +1,54 @@
+.container{
+  padding: 10px;
+  margin: 10px auto 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 980px;
+  color: #fff;
+}
+.card{
+  width: 479px;
+  margin: 5px;
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(145, 143, 143);
+  border-radius: 7px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.info-container{
+  height: 100%;
+  padding: 3px 3px 0 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: start;
+}
+.info-container{
+  .title{
+    font-size: 19px;
+    margin: 5px 0;
+    cursor: pointer;
+    &:hover{
+      font-weight: bold;
+    }
+  }
+  .status-species{
+    margin: 10px 0 2px 0;
+  }
+  .location{
+    margin: 10px 0 5px 0;
+    span {
+      color: rgb(199, 195, 195);
+    }
+  }
+}
+img{
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
