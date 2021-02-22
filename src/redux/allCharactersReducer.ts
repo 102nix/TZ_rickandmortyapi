@@ -1,4 +1,4 @@
-const GET_CHARACTER = 'GET_CHARACTER'
+const GET_CHARACTERS = 'GET_CHARACTERS'
 const SET_FETCHING = 'SET_FETCHING'
 const SET_CHARACTER_ID = 'SET_CHARACTER_ID'
 export const GET_ALL_CHARACTER_SAGA = 'GET_ALL_CHARACTER_SAGA'
@@ -67,9 +67,9 @@ let initialState: InitialStateType = {
     }
 }
 
-const dataReducer = (state = initialState, action: ActionsType): InitialStateType => {
+const allCharactersReducer = (state = initialState, action: ActionsType): InitialStateType => {
   switch (action.type) {
-    case GET_CHARACTER:
+    case GET_CHARACTERS:
       return {
         ...state,
         info: Object.assign(state.info, action.payload.info),
@@ -100,10 +100,10 @@ const dataReducer = (state = initialState, action: ActionsType): InitialStateTyp
   }
 }
 
-type ActionsType = getRateType | SetFatchingType | SetCaracterIdType | SetCurrentCardType | DropUpdateType
+type ActionsType = getCharactersType | SetFatchingType | SetCaracterIdType | SetCurrentCardType | DropUpdateType
 
-type getRateType = {
-  type: typeof GET_CHARACTER
+type getCharactersType = {
+  type: typeof GET_CHARACTERS
   payload: DataResponseType
 }
 type SetFatchingType = {
@@ -127,11 +127,11 @@ type DropUpdateType = {
   dropResult: Array<CardType>
 }
 
-export const getCharacters = (payload: DataResponseType): getRateType => ({type: GET_CHARACTER, payload})
+export const getCharacters = (payload: DataResponseType): getCharactersType => ({type: GET_CHARACTERS, payload})
 export const setFetching = (payload: boolean): SetFatchingType => ({type: SET_FETCHING, payload})
 export const setCharacterId = (payload: number): SetCaracterIdType => ({type: SET_CHARACTER_ID, payload})
 export const getAllCharactersSaga = (val: string = 'https://rickandmortyapi.com/api/character'): GetAllCharactersSagaType => ({type: GET_ALL_CHARACTER_SAGA, val})
 export const setCurrentCard = (card: CardType): SetCurrentCardType => ({type: SET_CURRENT_CARD, card})
 export const dropUpdate = (dropResult: Array<CardType>): DropUpdateType => ({type: DROP_UPDATE, dropResult}) 
 
-export default dataReducer
+export default allCharactersReducer

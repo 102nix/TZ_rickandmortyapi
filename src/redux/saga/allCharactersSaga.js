@@ -5,7 +5,11 @@ import { getCharacters, setFetching, GET_ALL_CHARACTER_SAGA } from '../allCharac
 function* fetchAllCharacter (action) {
   try {
     const response = yield call (RickandmortyAPI.getScrollCharacters, action.val)
-    yield put(getCharacters({info: response.data.info, results: response.data.results, status: response.status}))
+    yield put(getCharacters({
+      info: response.data.info, 
+      results: response.data.results, 
+      status: response.status})
+    )
     yield put(setFetching(false))
   } catch (err) {
     console.log(err)

@@ -19,6 +19,13 @@
   border-radius: 7px;
   overflow: hidden;
   cursor: pointer;
+  transform: scale(1);
+  transition: all .4s;
+  &:hover{
+    z-index: 1000;
+    transform: scale(1.03);
+  }
+
 }
 .info-container{
   height: 100%;

@@ -27,9 +27,9 @@ const aboutCharacterReducer = (state = initialState, action: ActionsType): Initi
         gender: action.payload.gender,
         id: action.payload.id,
         image: action.payload.image,
-        location: {name: action.payload.location.name, url: action.payload.location.url},
+        location: { name: action.payload.location.name, url: action.payload.location.url },
         name: action.payload.name,
-        origin: {name: action.payload.origin.name, url: action.payload.origin.url},
+        origin: { name: action.payload.origin.name, url: action.payload.origin.url },
         species: action.payload.species,
         status: action.payload.status,
         type: action.payload.type

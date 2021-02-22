@@ -1,4 +1,4 @@
-import { combineReducers, createStore, applyMiddleware } from 'redux';
+import { combineReducers, createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk';
 import allCharactersReducer from './allCharactersReducer'
 import aboutCharacterReducer from './aboutCharacterReducer'

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './Characters.scss';
 import { connect } from 'react-redux'
-import { InfoType, getAllCharactersSaga, setFetching, setCharacterId, CardType, setCurrentCard, dropUpdate } from '../../redux/allCharactersReducer'
+import { InfoType, CardType, getAllCharactersSaga, setFetching, setCharacterId, setCurrentCard, dropUpdate } from '../../redux/allCharactersReducer'
 import { AppStateType } from '../../redux/store';
 import { useHistory } from 'react-router-dom'
 
@@ -20,7 +20,7 @@ type StatePropsType = {
   currentCard: CardType 
 }
 
-const Characters: React.FC<StatePropsType & DispatchPropsType> = (props) => {
+const Characters: React.FC<StatePropsType & DispatchPropsType> = props => {
 
   const history = useHistory()
 
@@ -55,8 +55,8 @@ const Characters: React.FC<StatePropsType & DispatchPropsType> = (props) => {
   const dragOverHandler = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault()
   }
-
   const dropHandler = (event: React.DragEvent<HTMLDivElement>, card: CardType) => {
+    
     event.preventDefault() 
 
     const dropResults: Array<CardType> = props.results?.map((element: CardType) => {
