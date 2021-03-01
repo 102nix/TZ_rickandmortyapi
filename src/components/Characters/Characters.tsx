@@ -1,9 +1,18 @@
-import React, { useEffect } from 'react';
-import './Characters.scss';
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { InfoType, CardType, getAllCharactersSaga, setFetching, setCharacterId, setCurrentCard, dropUpdate } from '../../redux/allCharactersReducer'
-import { AppStateType } from '../../redux/store';
 import { useHistory } from 'react-router-dom'
+import './Characters.scss';
+//types:
+import { InfoType, CardType } from '../../types/allCharactersStoreType'
+import { AppStateType } from '../../redux/store';
+//AC's:
+import { 
+  getAllCharactersSaga, 
+  setFetching,
+  setCharacterId, 
+  setCurrentCard, 
+  dropUpdate } from '../../redux/allCharactersAC'
+import { sortsEl } from '../../sort';
 
 type DispatchPropsType = {
   setFetching(value: boolean): void
@@ -26,7 +35,9 @@ const Characters: React.FC<StatePropsType & DispatchPropsType> = props => {
 
   useEffect(() => {
     props.getAllCharactersSaga()
-    window.addEventListener('scroll', scrollHandler);
+    window.addEventListener('scroll', scrollHandler)
+
+    return () => window.removeEventListener('scroll', scrollHandler)    
   }, [])
 
   const scrollHandler = () => {
@@ -68,11 +79,6 @@ const Characters: React.FC<StatePropsType & DispatchPropsType> = props => {
     props.dropUpdate(dropResults)
   }
 
-  const sortsEl = (a: CardType, b: CardType) => {
-    if ((a.id || 0) > (b.id || 0)) return 1
-    return -1
-  }
-
   return (
     <div className="container">
       {props.status === 200 &&
@@ -106,7 +112,7 @@ const Characters: React.FC<StatePropsType & DispatchPropsType> = props => {
     </div>
   );
 }
-let mapStateToProps = (state: AppStateType): StatePropsType => {
+const mapStateToProps = (state: AppStateType): StatePropsType => {
   return {
     info: state.allCharactersReducer.info,
     results: state.allCharactersReducer.results,

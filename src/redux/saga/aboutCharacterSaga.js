@@ -1,6 +1,7 @@
 import { put, takeEvery, call } from 'redux-saga/effects'
 import { RickandmortyAPI } from '../../api/api'
-import { getCharacter, GET_ABOUT_CHARACTER_SAGA } from '../aboutCharacterReducer'
+import { GET_ABOUT_CHARACTER_SAGA } from '../aboutCharacterReducer'
+import { getCharacter } from '../aboutCharacterAC'
 
 function* fetchAboutCharacter (action) {
   try {

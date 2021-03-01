@@ -7,7 +7,7 @@ import { rootWatcher } from './saga/index';
 
 const sagaMiddleware = createSagaMiddleware()
 
-let rootReducer = combineReducers({
+const rootReducer = combineReducers({
   allCharactersReducer,
   aboutCharacterReducer
 })

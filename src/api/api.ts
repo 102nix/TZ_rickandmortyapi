@@ -1,9 +1,8 @@
 import axios from 'axios';
-import { InitialStateAboutCharacterType } from '../redux/aboutCharacterReducer';
-import { InitialStateType } from '../redux/allCharactersReducer';
+import { InitialStateAboutCharacterType } from '../types/aboutCharactersType';
+import { InitialStateType } from '../types/allCharactersStoreType';
 
 const API_URL_CHARACTERS = 'https://rickandmortyapi.com/api/character'
-
 
 export const RickandmortyAPI = {
 
@@ -14,4 +13,3 @@ export const RickandmortyAPI = {
     return axios.get<InitialStateAboutCharacterType>(`${API_URL_CHARACTERS}/${id}`)
   }
 }
-

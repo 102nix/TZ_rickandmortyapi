@@ -1,7 +1,9 @@
-const GET_ABOUT_CHARACTER = 'GET_ABOUT_CHARACTER'
+import {InitialStateAboutCharacterType, ActionsType } from "../types/aboutCharactersType"
+
+export const GET_ABOUT_CHARACTER = 'GET_ABOUT_CHARACTER'
 export const GET_ABOUT_CHARACTER_SAGA = 'GET_ABOUT_CHARACTER_SAGA'
 
-let initialState = {
+let initialState: InitialStateAboutCharacterType = {
   created: '',
   episode: [''],
   gender: '',
@@ -14,8 +16,6 @@ let initialState = {
   status: '',
   type: ''
 }
-
-export type InitialStateAboutCharacterType = typeof initialState
 
 const aboutCharacterReducer = (state = initialState, action: ActionsType): InitialStateAboutCharacterType => {
   switch (action.type) {
@@ -37,19 +37,5 @@ const aboutCharacterReducer = (state = initialState, action: ActionsType): Initi
     default: return state
   }
 }
-
-type ActionsType = getAboutCharacterType | getCharacterSagaType
-
-type getAboutCharacterType = {
-  type: typeof GET_ABOUT_CHARACTER
-  payload: InitialStateAboutCharacterType
-}
-type getCharacterSagaType = {
-  type: typeof GET_ABOUT_CHARACTER_SAGA
-  id: number
-}
-
-export const getCharacter = (payload: InitialStateAboutCharacterType): getAboutCharacterType => ({type: GET_ABOUT_CHARACTER, payload})
-export const getCharacterSaga = (id: number): getCharacterSagaType => ({type: GET_ABOUT_CHARACTER_SAGA, id})
 
 export default aboutCharacterReducer

@@ -1,43 +1,11 @@
-const GET_CHARACTERS = 'GET_CHARACTERS'
-const SET_FETCHING = 'SET_FETCHING'
-const SET_CHARACTER_ID = 'SET_CHARACTER_ID'
-export const GET_ALL_CHARACTER_SAGA = 'GET_ALL_CHARACTER_SAGA'
-const SET_CURRENT_CARD = 'SET_CURRENT_CARD'
-const DROP_UPDATE = 'DROP_UPDATE'
+import { ActionsType, InitialStateType } from "../types/allCharactersStoreType"
 
-export type InfoType = {
-  count: number
-  pages: number
-  next: null | string
-  prev: null | string
-}
-export type DataResponseType = {
-  info: InfoType
-  results: Array<CardType> 
-  status: number
-}
-export type CardType = {
-  id: null | number
-  name: string
-  status: string
-  species: string
-  type: string
-  gender: string
-  location: {
-    name: string
-    url: string
-  },
-  image: string
-  url: string
-}
-export type InitialStateType = {
-  info: InfoType
-  results: Array<CardType>
-  status: number
-  isFetching: boolean
-  characterId: number
-  currentCard: CardType
-}
+export const GET_CHARACTERS = 'GET_CHARACTERS'
+export const SET_FETCHING = 'SET_FETCHING'
+export const SET_CHARACTER_ID = 'SET_CHARACTER_ID'
+export const GET_ALL_CHARACTER_SAGA = 'GET_ALL_CHARACTER_SAGA'
+export const SET_CURRENT_CARD = 'SET_CURRENT_CARD'
+export const DROP_UPDATE = 'DROP_UPDATE'
 
 let initialState: InitialStateType = {
   info: {
@@ -99,39 +67,5 @@ const allCharactersReducer = (state = initialState, action: ActionsType): Initia
     default: return state
   }
 }
-
-type ActionsType = getCharactersType | SetFatchingType | SetCaracterIdType | SetCurrentCardType | DropUpdateType
-
-type getCharactersType = {
-  type: typeof GET_CHARACTERS
-  payload: DataResponseType
-}
-type SetFatchingType = {
-  type: typeof SET_FETCHING
-  payload: boolean
-}
-type SetCaracterIdType = {
-  type: typeof SET_CHARACTER_ID 
-  payload: number
-}
-type GetAllCharactersSagaType = {
-  type: typeof GET_ALL_CHARACTER_SAGA 
-  val: string
-}
-type SetCurrentCardType = {
-  type: typeof SET_CURRENT_CARD
-  card: CardType
-}
-type DropUpdateType = {
-  type: typeof DROP_UPDATE
-  dropResult: Array<CardType>
-}
-
-export const getCharacters = (payload: DataResponseType): getCharactersType => ({type: GET_CHARACTERS, payload})
-export const setFetching = (payload: boolean): SetFatchingType => ({type: SET_FETCHING, payload})
-export const setCharacterId = (payload: number): SetCaracterIdType => ({type: SET_CHARACTER_ID, payload})
-export const getAllCharactersSaga = (val: string = 'https://rickandmortyapi.com/api/character'): GetAllCharactersSagaType => ({type: GET_ALL_CHARACTER_SAGA, val})
-export const setCurrentCard = (card: CardType): SetCurrentCardType => ({type: SET_CURRENT_CARD, card})
-export const dropUpdate = (dropResult: Array<CardType>): DropUpdateType => ({type: DROP_UPDATE, dropResult}) 
 
 export default allCharactersReducer

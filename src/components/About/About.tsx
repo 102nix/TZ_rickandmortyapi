@@ -1,9 +1,13 @@
 import React, { useEffect } from 'react'
-import './About.scss'
-import { InitialStateAboutCharacterType, getCharacterSaga } from '../../redux/aboutCharacterReducer'
 import { connect } from 'react-redux'
-import { AppStateType } from '../../redux/store';
 import { useHistory } from 'react-router-dom'
+import './About.scss' 
+//types:
+import { InitialStateAboutCharacterType } from '../../types/aboutCharactersType'
+import { AppStateType } from '../../redux/store'
+//AC:
+import { getCharacterSaga } from '../../redux/aboutCharacterAC'
+
 
 type StatePropsType = {
   characterId: number
@@ -78,7 +82,7 @@ const About: React.FC<StatePropsType & DispatchProps & InitialStateAboutCharacte
   )
 }
 
-let mapStateToProps = (state: AppStateType): StatePropsType & InitialStateAboutCharacterType => {
+const mapStateToProps = (state: AppStateType): StatePropsType & InitialStateAboutCharacterType => {
   return {
     characterId: state.allCharactersReducer.characterId,
     created: state.aboutCharacterReducer.created,
