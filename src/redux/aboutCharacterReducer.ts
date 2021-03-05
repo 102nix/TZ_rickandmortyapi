@@ -1,4 +1,4 @@
-import {InitialStateAboutCharacterType, ActionsType } from "../types/aboutCharactersType"
+import {InitialStateAboutCharacterType, ActionsType } from "../types/storeAboutCharactersType"
 
 export const GET_ABOUT_CHARACTER = 'GET_ABOUT_CHARACTER'
 export const GET_ABOUT_CHARACTER_SAGA = 'GET_ABOUT_CHARACTER_SAGA'

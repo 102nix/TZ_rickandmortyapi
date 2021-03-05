@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import './Characters.scss';
 //types:
-import { InfoType, CardType } from '../../types/allCharactersStoreType'
+import { CardType } from '../../types/storeAllCharactersType'
 import { AppStateType } from '../../redux/store';
 //AC's:
 import { 
@@ -13,23 +13,9 @@ import {
   setCurrentCard, 
   dropUpdate } from '../../redux/allCharactersAC'
 import { sortsEl } from '../../sort';
+import { CharactersDispatchType, CharactersStateType } from '../../types/componentsTypes';
 
-type DispatchPropsType = {
-  setFetching(value: boolean): void
-  getAllCharactersSaga(val?: string): void
-  setCharacterId(val: number): void
-  setCurrentCard(card: CardType): void
-  dropUpdate(dropResults: Array<CardType>): void
-}
-type StatePropsType = {
-  results: Array<CardType>
-  info: InfoType
-  status: number
-  isFetching: boolean
-  currentCard: CardType 
-}
-
-const Characters: React.FC<StatePropsType & DispatchPropsType> = props => {
+const Characters: React.FC<CharactersStateType & CharactersDispatchType> = props => {
 
   const history = useHistory()
 
@@ -112,7 +98,7 @@ const Characters: React.FC<StatePropsType & DispatchPropsType> = props => {
     </div>
   );
 }
-const mapStateToProps = (state: AppStateType): StatePropsType => {
+const mapStateToProps = (state: AppStateType): CharactersStateType => {
   return {
     info: state.allCharactersReducer.info,
     results: state.allCharactersReducer.results,

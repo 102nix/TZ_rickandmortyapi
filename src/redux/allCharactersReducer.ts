@@ -1,4 +1,4 @@
-import { ActionsType, InitialStateType } from "../types/allCharactersStoreType"
+import { ActionsType, InitialStateType } from "../types/storeAllCharactersType"
 
 export const GET_CHARACTERS = 'GET_CHARACTERS'
 export const SET_FETCHING = 'SET_FETCHING'

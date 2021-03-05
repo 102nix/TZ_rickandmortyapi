@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { InitialStateAboutCharacterType } from '../types/aboutCharactersType';
-import { InitialStateType } from '../types/allCharactersStoreType';
+import { InitialStateAboutCharacterType } from '../types/storeAboutCharactersType';
+import { InitialStateType } from '../types/storeAllCharactersType';
 
 const API_URL_CHARACTERS = 'https://rickandmortyapi.com/api/character'
 

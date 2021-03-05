@@ -3,19 +3,13 @@ import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import './About.scss' 
 //types:
-import { InitialStateAboutCharacterType } from '../../types/aboutCharactersType'
+import { InitialStateAboutCharacterType } from '../../types/storeAboutCharactersType'
 import { AppStateType } from '../../redux/store'
 //AC:
 import { getCharacterSaga } from '../../redux/aboutCharacterAC'
+import { AboutDispatchType, AboutStateType } from '../../types/componentsTypes'
 
-
-type StatePropsType = {
-  characterId: number
-}
-type DispatchProps = {
-  getCharacterSaga(id: number): void
-}
-const About: React.FC<StatePropsType & DispatchProps & InitialStateAboutCharacterType> = props => {
+const About: React.FC<AboutStateType & AboutDispatchType & InitialStateAboutCharacterType> = props => {
 
   const history = useHistory()
 
@@ -82,7 +76,7 @@ const About: React.FC<StatePropsType & DispatchProps & InitialStateAboutCharacte
   )
 }
 
-const mapStateToProps = (state: AppStateType): StatePropsType & InitialStateAboutCharacterType => {
+const mapStateToProps = (state: AppStateType): AboutStateType & InitialStateAboutCharacterType => {
   return {
     characterId: state.allCharactersReducer.characterId,
     created: state.aboutCharacterReducer.created,

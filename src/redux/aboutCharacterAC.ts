@@ -1,4 +1,4 @@
-import { getAboutCharacterType, getCharacterSagaType, InitialStateAboutCharacterType } from "../types/aboutCharactersType"
+import { getAboutCharacterType, getCharacterSagaType, InitialStateAboutCharacterType } from "../types/storeAboutCharactersType"
 import { GET_ABOUT_CHARACTER, GET_ABOUT_CHARACTER_SAGA } from "./aboutCharacterReducer"
 
 

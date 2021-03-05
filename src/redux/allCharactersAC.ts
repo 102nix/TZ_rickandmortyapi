@@ -6,7 +6,7 @@ import {
   getCharactersType, 
   SetCaracterIdType, 
   SetCurrentCardType, 
-  SetFatchingType } from "../types/allCharactersStoreType"
+  SetFatchingType } from "../types/storeAllCharactersType"
 import { DROP_UPDATE, GET_ALL_CHARACTER_SAGA, GET_CHARACTERS, SET_CHARACTER_ID, SET_CURRENT_CARD, SET_FETCHING } from "./allCharactersReducer"
 
 export const getCharacters = (payload: DataResponseType): getCharactersType => ({type: GET_CHARACTERS, payload})
