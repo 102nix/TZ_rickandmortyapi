@@ -1,5 +1,7 @@
-import { GET_ABOUT_CHARACTER, GET_ABOUT_CHARACTER_SAGA } from "../redux/aboutCharacterReducer"
-
+export enum AboutChsConts {
+  GET_ABOUT_CHARACTER = 'GET_ABOUT_CHARACTER',
+  GET_ABOUT_CHARACTER_SAGA = 'GET_ABOUT_CHARACTER_SAGA'
+}
 export type InitialStateAboutCharacterType = {
   created: string
   episode: Array<string>
@@ -16,10 +18,10 @@ export type InitialStateAboutCharacterType = {
 export type ActionsType = getAboutCharacterType | getCharacterSagaType
 
 export type getAboutCharacterType = {
-  type: typeof GET_ABOUT_CHARACTER
+  type: AboutChsConts.GET_ABOUT_CHARACTER
   payload: InitialStateAboutCharacterType
 }
 export type getCharacterSagaType = {
-  type: typeof GET_ABOUT_CHARACTER_SAGA
+  type: AboutChsConts.GET_ABOUT_CHARACTER_SAGA
   id: number
 }

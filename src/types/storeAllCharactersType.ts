@@ -1,10 +1,11 @@
-import { 
-  DROP_UPDATE, 
-  GET_ALL_CHARACTER_SAGA, 
-  GET_CHARACTERS, 
-  SET_CHARACTER_ID, 
-  SET_CURRENT_CARD, 
-  SET_FETCHING } from "../redux/allCharactersReducer"
+export enum AllChsConts {
+  GET_CHARACTERS = 'GET_CHARACTERS',
+  SET_FETCHING = 'SET_FETCHING',
+  SET_CHARACTER_ID = 'SET_CHARACTER_ID',
+  GET_ALL_CHARACTER_SAGA = 'GET_ALL_CHARACTER_SAGA',
+  SET_CURRENT_CARD = 'SET_CURRENT_CARD',
+  DROP_UPDATE = 'DROP_UPDATE',
+}
 
 export type InfoType = {
   count: number
@@ -43,26 +44,26 @@ export type InitialStateType = {
 export type ActionsType = getCharactersType | SetFatchingType | SetCaracterIdType | SetCurrentCardType | DropUpdateType
 
 export type getCharactersType = {
-  type: typeof GET_CHARACTERS
+  type: AllChsConts.GET_CHARACTERS
   payload: DataResponseType
 }
 export type SetFatchingType = {
-  type: typeof SET_FETCHING
+  type: AllChsConts.SET_FETCHING
   payload: boolean
 }
 export type SetCaracterIdType = {
-  type: typeof SET_CHARACTER_ID 
+  type: AllChsConts.SET_CHARACTER_ID 
   payload: number
 }
 export type GetAllCharactersSagaType = {
-  type: typeof GET_ALL_CHARACTER_SAGA 
+  type: AllChsConts.GET_ALL_CHARACTER_SAGA 
   val: string
 }
 export type SetCurrentCardType = {
-  type: typeof SET_CURRENT_CARD
+  type: AllChsConts.SET_CURRENT_CARD
   card: CardType
 }
 export type DropUpdateType = {
-  type: typeof DROP_UPDATE
+  type: AllChsConts.DROP_UPDATE
   dropResult: Array<CardType>
 }

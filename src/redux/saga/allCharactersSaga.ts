@@ -1,12 +1,12 @@
 import { put, call, takeEvery } from 'redux-saga/effects'
 import { RickandmortyAPI } from '../../api/api' 
 import { IfetchAllCharacters } from '../../types/sagaInterfaces'
+import { AllChsConts } from '../../types/storeAllCharactersType'
 import { getCharacters, setFetching } from '../allCharactersAC'
-import { GET_ALL_CHARACTER_SAGA } from '../allCharactersReducer'
 
 function* fetchAllCharacter (action: IfetchAllCharacters) {
   try {
-    const response = yield call (RickandmortyAPI.getScrollCharacters, action.val)
+    const response = yield call (RickandmortyAPI.getScrollCharacters, action.val) 
     yield put(getCharacters({
       info: response.data.info, 
       results: response.data.results, 
@@ -19,5 +19,5 @@ function* fetchAllCharacter (action: IfetchAllCharacters) {
 }
 
 export function* allCharactersWatcher () {
-  yield takeEvery(GET_ALL_CHARACTER_SAGA, fetchAllCharacter)
+  yield takeEvery(AllChsConts.GET_ALL_CHARACTER_SAGA, fetchAllCharacter)
 }

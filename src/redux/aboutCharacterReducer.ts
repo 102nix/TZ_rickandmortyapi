@@ -1,7 +1,4 @@
-import {InitialStateAboutCharacterType, ActionsType } from "../types/storeAboutCharactersType"
-
-export const GET_ABOUT_CHARACTER = 'GET_ABOUT_CHARACTER'
-export const GET_ABOUT_CHARACTER_SAGA = 'GET_ABOUT_CHARACTER_SAGA'
+import {InitialStateAboutCharacterType, ActionsType, AboutChsConts } from "../types/storeAboutCharactersType"
 
 let initialState: InitialStateAboutCharacterType = {
   created: '',
@@ -19,7 +16,7 @@ let initialState: InitialStateAboutCharacterType = {
 
 const aboutCharacterReducer = (state = initialState, action: ActionsType): InitialStateAboutCharacterType => {
   switch (action.type) {
-    case GET_ABOUT_CHARACTER:
+    case AboutChsConts.GET_ABOUT_CHARACTER:
       return {
         ...state,
         created: action.payload.created,
