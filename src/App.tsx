@@ -1,8 +1,8 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import './App.scss'
-import About from './components/About/About'
-import Characters from './components/Characters/Characters'
+import { About } from './components/About/About'
+import { Characters } from './components/Characters/Characters'
 
 function App() {
   return(

@@ -1,60 +1,72 @@
 import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import './About.scss' 
 //types:
-import { InitialStateAboutCharacterType } from '../../types/storeAboutCharactersType'
 import { AppStateType } from '../../redux/store'
 //AC:
 import { getCharacterSaga } from '../../redux/aboutCharacterAC'
-import { AboutDispatchType, AboutStateType } from '../../types/componentsTypes'
 
-const About: React.FC<AboutStateType & AboutDispatchType & InitialStateAboutCharacterType> = props => {
+export const About: React.FC = () => {
 
   const history = useHistory()
 
+  const dispatch = useDispatch()
+  const characterId = useSelector((state: AppStateType) => state.allCharactersReducer.characterId)
+  const created = useSelector((state: AppStateType) =>state.aboutCharacterReducer.created)
+  const episode = useSelector((state: AppStateType) => state.aboutCharacterReducer.episode)
+  const gender = useSelector((state: AppStateType) => state.aboutCharacterReducer.gender)
+  const id = useSelector((state: AppStateType) => state.aboutCharacterReducer.id)
+  const image = useSelector((state: AppStateType) => state.aboutCharacterReducer.image)
+  const location = useSelector((state: AppStateType) => state.aboutCharacterReducer.location)
+  const name = useSelector((state: AppStateType) => state.aboutCharacterReducer.name)
+  const origin = useSelector((state: AppStateType) => state.aboutCharacterReducer.origin)
+  const species = useSelector((state: AppStateType) => state.aboutCharacterReducer.species)
+  const status = useSelector((state: AppStateType) => state.aboutCharacterReducer.status)
+  const type = useSelector((state: AppStateType) => state.aboutCharacterReducer.type)
+
   useEffect(() => {
-    props.getCharacterSaga(props.characterId)
-    if (props.characterId === 0) history.push('/')
+    dispatch(getCharacterSaga(characterId))
+    if (characterId === 0) history.push('/')
   }, [])
 
   return (
     <div className="about">
       <div className="container">
         <div className="title">
-          Character: <strong>{props.name}</strong>
+          Character: <strong>{name}</strong>
         </div>
         <table className="table-character">
           <tbody>
             <tr>
-              <td>id:</td><td>{props.id}</td>
+              <td>id:</td><td>{id}</td>
             </tr>
             <tr>
-              <td>name:</td><td>{props.name}</td>
+              <td>name:</td><td>{name}</td>
             </tr>
             <tr>
-              <td>status:</td><td>{props.status}</td>
+              <td>status:</td><td>{status}</td>
             </tr>
             <tr>
-              <td>species:</td><td>{props.species}</td>
+              <td>species:</td><td>{species}</td>
             </tr>
             <tr>
-              <td>type:</td><td>{props.type}</td>
+              <td>type:</td><td>{type}</td>
             </tr>
             <tr>
-              <td>gender:</td><td>{props.gender}</td>
+              <td>gender:</td><td>{gender}</td>
             </tr>
             <tr>
-              <td>origin:</td><td>{props.origin.name} {props.origin.url} </td>
+              <td>origin:</td><td>{origin.name} {origin.url} </td>
             </tr>
             <tr>
-              <td>location:</td><td>{props.location.name} {props.location.url} </td>
+              <td>location:</td><td>{location.name} {location.url} </td>
             </tr>
             <tr>
-              <td>image:</td><td>{props.image}</td>
+              <td>image:</td><td>{image}</td>
             </tr>
             <tr>
-              <td>episode</td><td>{props.episode.map((ep, i) => {
+              <td>episode</td><td>{episode.map((ep, i) => {
                 return (
                   <div className="episode-div" key={ep}>
                     <span>{i}</span> <strong>{ep}</strong>
@@ -63,10 +75,10 @@ const About: React.FC<AboutStateType & AboutDispatchType & InitialStateAboutChar
               })}</td>
             </tr>
             <tr>
-              <td>image</td><td>{props.image}</td>
+              <td>image</td><td>{image}</td>
             </tr>
             <tr>
-              <td>created:</td><td>{props.created}</td>
+              <td>created:</td><td>{created}</td>
             </tr>
           </tbody>
         </table>
@@ -75,22 +87,3 @@ const About: React.FC<AboutStateType & AboutDispatchType & InitialStateAboutChar
     </div>
   )
 }
-
-const mapStateToProps = (state: AppStateType): AboutStateType & InitialStateAboutCharacterType => {
-  return {
-    characterId: state.allCharactersReducer.characterId,
-    created: state.aboutCharacterReducer.created,
-    episode: state.aboutCharacterReducer.episode,
-    gender: state.aboutCharacterReducer.gender,
-    id: state.aboutCharacterReducer.id,
-    image: state.aboutCharacterReducer.image,
-    location: state.aboutCharacterReducer.location,
-    name: state.aboutCharacterReducer.name,
-    origin: state.aboutCharacterReducer.origin,
-    species: state.aboutCharacterReducer.species,
-    status: state.aboutCharacterReducer.status,
-    type: state.aboutCharacterReducer.type
-  }
-}
-const connector = connect(mapStateToProps, { getCharacterSaga })
-export default connector(About)

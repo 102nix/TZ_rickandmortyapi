@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import './Characters.scss';
 //types:
@@ -12,15 +12,20 @@ import {
   setCharacterId, 
   setCurrentCard, 
   dropUpdate } from '../../redux/allCharactersAC'
-import { sortsEl } from '../../sort';
-import { CharactersDispatchType, CharactersStateType } from '../../types/componentsTypes';
+import { sortsEl } from '../../sort'
 
-const Characters: React.FC<CharactersStateType & CharactersDispatchType> = props => {
+export const Characters: React.FC = () => {
 
   const history = useHistory()
+  const dispatch = useDispatch()
+  const info = useSelector((state: AppStateType) => state.allCharactersReducer.info)
+  const results = useSelector((state: AppStateType) => state.allCharactersReducer.results)
+  const status = useSelector((state: AppStateType) => state.allCharactersReducer.status)
+  const isFetching = useSelector((state: AppStateType) => state.allCharactersReducer.isFetching)
+  const currentCard = useSelector((state: AppStateType) => state.allCharactersReducer.currentCard)
 
   useEffect(() => {
-    props.getAllCharactersSaga()
+    dispatch(getAllCharactersSaga())
     window.addEventListener('scroll', scrollHandler)
 
     return () => window.removeEventListener('scroll', scrollHandler)    
@@ -29,25 +34,25 @@ const Characters: React.FC<CharactersStateType & CharactersDispatchType> = props
   const scrollHandler = () => {
     if (
       Math.ceil(window.innerHeight + document.documentElement.scrollTop) !== document.documentElement.offsetHeight ||
-      props.isFetching
+      isFetching
     )
       return
 
-    props.setFetching(true)
+    dispatch(setFetching(true))
   }
 
   useEffect(() => {
-    if (!props.isFetching) return;
-    props.getAllCharactersSaga(props.info.next!)
-  }, [props.isFetching])
+    if (!isFetching) return;
+    dispatch(getAllCharactersSaga(info.next!))
+  }, [isFetching])
 
   const aboutCharacterHandler = (id: number) => {
-    props.setCharacterId(id)
+    dispatch(setCharacterId(id))
     history.push('/about')
   }
 
   const dragStartHandler = (card: CardType) => {
-    props.setCurrentCard(card)
+    dispatch(setCurrentCard(card))
   }
   const dragOverHandler = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault()
@@ -56,19 +61,19 @@ const Characters: React.FC<CharactersStateType & CharactersDispatchType> = props
     
     event.preventDefault() 
 
-    const dropResults: Array<CardType> = props.results?.map((element: CardType) => {
-      if (element.id === card.id) return {...element, id: props.currentCard.id}
-      if (element.id === props.currentCard.id) return {...element, id: card.id}
+    const dropResults: Array<CardType> = results?.map((element: CardType) => {
+      if (element.id === card.id) return {...element, id: currentCard.id}
+      if (element.id === currentCard.id) return {...element, id: card.id}
       return element
     })
 
-    props.dropUpdate(dropResults)
+    dispatch(dropUpdate(dropResults))
   }
 
   return (
     <div className="container">
-      {props.status === 200 &&
-        props.results?.sort(sortsEl).map(characker => { 
+      {status === 200 &&
+        results?.sort(sortsEl).map(characker => { 
           return (
             <div 
               className="card" 
@@ -96,16 +101,8 @@ const Characters: React.FC<CharactersStateType & CharactersDispatchType> = props
           )
         })}
     </div>
-  );
+  )
 }
-const mapStateToProps = (state: AppStateType): CharactersStateType => {
-  return {
-    info: state.allCharactersReducer.info,
-    results: state.allCharactersReducer.results,
-    status: state.allCharactersReducer.status,
-    isFetching: state.allCharactersReducer.isFetching,
-    currentCard: state.allCharactersReducer.currentCard,
-  }
-}
-const connector = connect(mapStateToProps, { getAllCharactersSaga, setFetching, setCharacterId, setCurrentCard, dropUpdate })
-export default connector(Characters)
+
+
+
