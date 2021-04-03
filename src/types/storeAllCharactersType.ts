@@ -1,3 +1,5 @@
+import { actions } from "../redux/allCharactersAC"
+
 export enum AllChsConts {
   GET_CHARACTERS = 'GET_CHARACTERS',
   SET_FETCHING = 'SET_FETCHING',
@@ -41,29 +43,5 @@ export type InitialStateType = {
   currentCard: CardType
 }
 
-export type ActionsType = getCharactersType | SetFatchingType | SetCaracterIdType | SetCurrentCardType | DropUpdateType
-
-export type getCharactersType = {
-  type: AllChsConts.GET_CHARACTERS
-  payload: DataResponseType
-}
-export type SetFatchingType = {
-  type: AllChsConts.SET_FETCHING
-  payload: boolean
-}
-export type SetCaracterIdType = {
-  type: AllChsConts.SET_CHARACTER_ID 
-  payload: number
-}
-export type GetAllCharactersSagaType = {
-  type: AllChsConts.GET_ALL_CHARACTER_SAGA 
-  val: string
-}
-export type SetCurrentCardType = {
-  type: AllChsConts.SET_CURRENT_CARD
-  card: CardType
-}
-export type DropUpdateType = {
-  type: AllChsConts.DROP_UPDATE
-  dropResult: Array<CardType>
-}
+type PropertiesType<T> = T extends {[key: string]: infer U}? U : never
+export type ActionsType = ReturnType<PropertiesType<typeof actions>>

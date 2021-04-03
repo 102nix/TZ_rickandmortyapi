@@ -1,17 +1,12 @@
-import { 
-  AllChsConts,
-  CardType, 
-  DataResponseType, 
-  DropUpdateType, 
-  GetAllCharactersSagaType, 
-  getCharactersType, 
-  SetCaracterIdType, 
-  SetCurrentCardType, 
-  SetFatchingType } from "../types/storeAllCharactersType"
+import { AllChsConts, CardType, DataResponseType } from "../types/storeAllCharactersType"
 
-export const getCharacters = (payload: DataResponseType): getCharactersType => ({type: AllChsConts.GET_CHARACTERS, payload})
-export const setFetching = (payload: boolean): SetFatchingType => ({type: AllChsConts.SET_FETCHING, payload})
-export const setCharacterId = (payload: number): SetCaracterIdType => ({type: AllChsConts.SET_CHARACTER_ID, payload})
-export const getAllCharactersSaga = (val: string = 'https://rickandmortyapi.com/api/character'): GetAllCharactersSagaType => ({type: AllChsConts.GET_ALL_CHARACTER_SAGA, val})
-export const setCurrentCard = (card: CardType): SetCurrentCardType => ({type: AllChsConts.SET_CURRENT_CARD, card})
-export const dropUpdate = (dropResult: Array<CardType>): DropUpdateType => ({type: AllChsConts.DROP_UPDATE, dropResult}) 
+const ALL_CHARACTERS: string = 'https://rickandmortyapi.com/api/character'
+
+export const actions = {
+getCharacters: (payload: DataResponseType) => ({type: AllChsConts.GET_CHARACTERS, payload} as const),
+setFetching: (payload: boolean) => ({type: AllChsConts.SET_FETCHING, payload} as const),
+setCharacterId: (payload: number) => ({type: AllChsConts.SET_CHARACTER_ID, payload} as const),
+getAllCharactersSaga: (val: string = ALL_CHARACTERS) => ({type: AllChsConts.GET_ALL_CHARACTER_SAGA, val} as const),
+setCurrentCard: (card: CardType) => ({type: AllChsConts.SET_CURRENT_CARD, card} as const),
+dropUpdate: (dropResult: Array<CardType>) => ({type: AllChsConts.DROP_UPDATE, dropResult} as const) 
+}

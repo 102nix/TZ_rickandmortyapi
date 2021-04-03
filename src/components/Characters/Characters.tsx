@@ -6,12 +6,7 @@ import './Characters.scss';
 import { CardType } from '../../types/storeAllCharactersType'
 import { AppStateType } from '../../redux/store';
 //AC's:
-import { 
-  getAllCharactersSaga, 
-  setFetching,
-  setCharacterId, 
-  setCurrentCard, 
-  dropUpdate } from '../../redux/allCharactersAC'
+import { actions } from '../../redux/allCharactersAC'
 import { sortsEl } from '../../sort'
 
 export const Characters: React.FC = () => {
@@ -25,7 +20,7 @@ export const Characters: React.FC = () => {
   const currentCard = useSelector((state: AppStateType) => state.allCharactersReducer.currentCard)
 
   useEffect(() => {
-    dispatch(getAllCharactersSaga())
+    dispatch(actions.getAllCharactersSaga())
     window.addEventListener('scroll', scrollHandler)
 
     return () => window.removeEventListener('scroll', scrollHandler)    
@@ -38,21 +33,21 @@ export const Characters: React.FC = () => {
     )
       return
 
-    dispatch(setFetching(true))
+    dispatch(actions.setFetching(true))
   }
 
   useEffect(() => {
     if (!isFetching) return;
-    dispatch(getAllCharactersSaga(info.next!))
+    dispatch(actions.getAllCharactersSaga(info.next!))
   }, [isFetching])
 
   const aboutCharacterHandler = (id: number) => {
-    dispatch(setCharacterId(id))
+    dispatch(actions.setCharacterId(id))
     history.push('/about')
   }
 
   const dragStartHandler = (card: CardType) => {
-    dispatch(setCurrentCard(card))
+    dispatch(actions.setCurrentCard(card))
   }
   const dragOverHandler = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault()
@@ -67,7 +62,7 @@ export const Characters: React.FC = () => {
       return element
     })
 
-    dispatch(dropUpdate(dropResults))
+    dispatch(actions.dropUpdate(dropResults))
   }
 
   return (
