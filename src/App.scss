@@ -1,4 +1,20 @@
-.content{
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0;
+}
+html,body {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(237, 243, 241);
+}
+.container{
+  position: relative;
   background-color: rgb(73, 73, 73);
-  min-height: 100vh;
+  height: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }

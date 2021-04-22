@@ -1,47 +1,49 @@
-.container{
-  padding: 10px;
-  margin: 10px auto 0 auto;
+.characters{
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  width: 980px;
   color: #fff;
+  width: 100%;
+  height: auto;
+  margin: 90px 15px 15px 0;
 }
 .card{
-  width: 479px;
-  margin: 5px;
-  height: 190px;
+  flex: 0 0 430px;
+  margin: 10px;
   display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: rgb(145, 143, 143);
   border-radius: 7px;
-  overflow: hidden;
   cursor: pointer;
   transform: scale(1);
   transition: all .4s;
   &:hover{
-    z-index: 1000;
+    z-index: 49;
     transform: scale(1.03);
   }
 
 }
+.img-container {
+  flex: 0 0 50%;
+  padding: 10px;
+  img{
+    max-width: 100%;
+    display: block;
+  }
+}
 .info-container{
-  height: 100%;
-  padding: 3px 3px 0 10px;
+  flex: 0 0 50%;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: left;
   justify-content: start;
-}
-.info-container{
   .title{
     font-size: 19px;
     margin: 5px 0;
     cursor: pointer;
     &:hover{
-      font-weight: bold;
+      text-decoration: underline;
     }
   }
   .status-species{
@@ -54,8 +56,12 @@
     }
   }
 }
-img{
-  max-width: 100%;
-  height: auto;
-  display: block;
+@media (max-width: 768px){
+  .characters{
+    flex-direction: column;
+  }
+  .card{
+    max-width: 550px;
+    flex: 0 0 auto;
+  }
 }

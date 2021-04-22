@@ -1,4 +1,4 @@
-import {InitialStateAboutCharacterType, ActionsType, AboutChsConts } from "../types/storeAboutCharactersType"
+import { InitialStateAboutCharacterType, ActionsType, AboutChsConts } from "../types/storeAboutCharactersType"
 
 let initialState: InitialStateAboutCharacterType = {
   created: '',

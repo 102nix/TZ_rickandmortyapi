@@ -3,7 +3,7 @@ import thunkMiddleware from 'redux-thunk';
 import allCharactersReducer from './allCharactersReducer'
 import aboutCharacterReducer from './aboutCharacterReducer'
 import createSagaMiddleware from 'redux-saga'
-import { rootWatcher } from './saga/index';
+import { rootWatcher } from './saga/index'
 
 const sagaMiddleware = createSagaMiddleware()
 

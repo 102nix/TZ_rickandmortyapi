@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import './Characters.scss';
+import './Characters.scss'
 //types:
 import { CardType } from '../../types/storeAllCharactersType'
 import { AppStateType } from '../../redux/store';
@@ -12,7 +12,9 @@ import { sortsEl } from '../../sort'
 export const Characters: React.FC = () => {
 
   const history = useHistory()
+
   const dispatch = useDispatch()
+  
   const info = useSelector((state: AppStateType) => state.allCharactersReducer.info)
   const results = useSelector((state: AppStateType) => state.allCharactersReducer.results)
   const status = useSelector((state: AppStateType) => state.allCharactersReducer.status)
@@ -43,7 +45,7 @@ export const Characters: React.FC = () => {
 
   const aboutCharacterHandler = (id: number) => {
     dispatch(actions.setCharacterId(id))
-    history.push('/about')
+    history.push('/character')
   }
 
   const dragStartHandler = (card: CardType) => {
@@ -66,7 +68,7 @@ export const Characters: React.FC = () => {
   }
 
   return (
-    <div className="container">
+    <div className="characters">
       {status === 200 &&
         results?.sort(sortsEl).map(characker => { 
           return (
