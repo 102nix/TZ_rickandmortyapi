@@ -12,6 +12,7 @@ export const Character: React.FC = () => {
   const history = useHistory()
 
   const dispatch = useDispatch()
+  
   const characterId = useSelector((state: AppStateType) => state.allCharactersReducer.characterId)
   const created = useSelector((state: AppStateType) =>state.aboutCharacterReducer.created)
   const episode = useSelector((state: AppStateType) => state.aboutCharacterReducer.episode)
@@ -32,10 +33,10 @@ export const Character: React.FC = () => {
 
   return (
     <div className="character">
-      <div className="title">
+      <div className="character__title">
         Character: <strong>{name}</strong>
       </div>
-      <table className="table-character">
+      <table className="character__table-character">
         <tbody>
           <tr>
             <td>id:</td><td>{id}</td>
@@ -67,7 +68,7 @@ export const Character: React.FC = () => {
           <tr>
             <td>episode</td><td>{episode.map((ep, i) => {
               return (
-                <div className="episode-div" key={ep}>
+                <div className="character__episode-div" key={ep}>
                   <span>{i}</span> <strong>{ep}</strong>
                 </div>
               )
@@ -81,7 +82,7 @@ export const Character: React.FC = () => {
           </tr>
         </tbody>
       </table>
-      <div className="go-back" onClick={() => history.push('/')}>&#8656;</div>
+      <div className="character__go-back" onClick={() => history.push('/')}>&#8656;</div>
     </div>
   )
 }

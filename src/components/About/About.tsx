@@ -4,12 +4,12 @@ import './About.scss'
 export const About: React.FC = () => {
   return(
     <div className="about">
-      <div className="title-about">
+      <div className="about__title">
         О проекте
       </div>
-      <div className="content-about">
+      <div className="about__content">
         <p>
-          На основе API [https://rickandmortyapi.com/](https://rickandmortyapi.com/), реализовать React приложение,
+          На основе API (https://rickandmortyapi.com/), реализовать React приложение,
           Lazy-список героев из мультсериала (lazy-список - список, в котором элементы подгружаются с бекенда частями).
           Т.е. когда скролл доходит до конца страницы - получаем следующую часть списка и т.д. 
           Пока у бекенда еще есть для нас данные.

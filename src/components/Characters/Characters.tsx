@@ -26,6 +26,7 @@ export const Characters: React.FC = () => {
     window.addEventListener('scroll', scrollHandler)
 
     return () => window.removeEventListener('scroll', scrollHandler)    
+    
   }, [])
 
   const scrollHandler = () => {
@@ -69,7 +70,7 @@ export const Characters: React.FC = () => {
 
   return (
     <div className="characters">
-      {status === 200 &&
+      { status === 200 &&
         results?.sort(sortsEl).map(characker => { 
           return (
             <div 
@@ -78,19 +79,19 @@ export const Characters: React.FC = () => {
               draggable={true}
               onDragStart={() => dragStartHandler(characker)}
               onDragOver={(event: React.DragEvent<HTMLDivElement>) => dragOverHandler(event)}
-              onDrop = {(event: React.DragEvent<HTMLDivElement>) => dropHandler(event, characker)}
+              onDrop={(event: React.DragEvent<HTMLDivElement>) => dropHandler(event, characker)}
             >
-              <div className="img-container">
+              <div className="card__img-container">
                 <img src={characker.image} alt="" />
               </div>
-              <div className="info-container">
-                <div className="title" onClick={() => aboutCharacterHandler(characker.id || 0)}>
+              <div className="card__info-container">
+                <div className="card__title" onClick={() => aboutCharacterHandler(characker.id || 0)}>
                   {characker.name}
                 </div>
-                <div className="status-species">
+                <div className="card__status-species">
                   {characker.status} - {characker.species}
                 </div>
-                <div className="location">
+                <div className="card__location">
                   <span>Last location: </span> {characker.location.name}
                 </div>
               </div>

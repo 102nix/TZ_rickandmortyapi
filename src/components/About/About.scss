@@ -6,7 +6,7 @@
   text-align: center;
   height: 100vh;
   font-size: 17px;
-  .title-about{
+  &__title{
     margin: 15px 0 25px 0;
     font-size: 21px;
     font-weight: bold;
@@ -20,10 +20,10 @@
 }
 @media (max-width: 768px){
   .about{
-    margin-top: 25px;
+    margin-top: 15px;
     font-size: 14px;
-  }
-  .title-about{
-    font-size: 18px;
+    &__title{
+      font-size: 18px;
+    }
   }
 }

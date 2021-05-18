@@ -21,41 +21,41 @@
     z-index: 49;
     transform: scale(1.03);
   }
+  &__img-container {
+    flex: 0 0 50%;
+    padding: 10px;
+    img{
+      max-width: 100%;
+      display: block;
+    }
+  }
+  &__info-container{
+    flex: 0 0 50%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: start;
+    .card__title{
+      font-size: 19px;
+      margin: 5px 0;
+      cursor: pointer;
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+    .card__status-species{
+      margin: 10px 0 2px 0;
+    }
+    .card__location{
+      margin: 10px 0 5px 0;
+      span {
+        color: rgb(199, 195, 195);
+      }
+    }
+  }
+}
 
-}
-.img-container {
-  flex: 0 0 50%;
-  padding: 10px;
-  img{
-    max-width: 100%;
-    display: block;
-  }
-}
-.info-container{
-  flex: 0 0 50%;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  justify-content: start;
-  .title{
-    font-size: 19px;
-    margin: 5px 0;
-    cursor: pointer;
-    &:hover{
-      text-decoration: underline;
-    }
-  }
-  .status-species{
-    margin: 10px 0 2px 0;
-  }
-  .location{
-    margin: 10px 0 5px 0;
-    span {
-      color: rgb(199, 195, 195);
-    }
-  }
-}
 @media (max-width: 768px){
   .characters{
     flex-direction: column;

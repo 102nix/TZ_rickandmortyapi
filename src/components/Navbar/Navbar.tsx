@@ -31,7 +31,8 @@ export const Navbar: React.FC = () => {
           <ul className="header__list">
             <li>
               <NavLink 
-                exact to='/' 
+                exact 
+                to='/' 
                 className="header__link"
                 onClick={handlerShowMenu}
               >
